@@ -1,29 +1,47 @@
 function refreshWeather(response) {
-    // Get temperature element and update it with the current temperature
     let temperatureElement = document.querySelector("#temperature");
-    temperatureElement.innerHTML = Math.round(response.data.temperature.current); // Ensure temperature is rounded
-    
-    let humidityElement = document.querySelector("humidity");
-    humidityElement.innerHTML = response.data.temperature.humidity
-    
-    
-    // Get city element and update it with the city name
+    let temperature = response.data.temperature.current;
     let cityElement = document.querySelector("#city");
-    cityElement.innerHTML = response.data.city;
-
-    // Additional weather info can be added here (e.g., description, humidity)
     let descriptionElement = document.querySelector("#description");
-    if (descriptionElement) {
-        descriptionElement.innerHTML = response.data.condition.description;
-    }
+    let humidityElement = document.querySelector("#humidity");
+    let windSpeedElement = document.querySelector("#wind-speed");
+    let timeElement = document.querySelector("#time");
+    let iconElement = document.querySelector("#icon");
+    let date = new Date(response.data.time * 1000);
+
+    cityElement.innerHTML = response.data.city;
+    timeElement.innerHTML = formatDate(date);
+    descriptionElement.innerHTML = response.data.condition.description;
+    humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+    windSpeedElement.innerHTML = `${response.data.wind.speed} km/h`;
+    temperatureElement.innerHTML = Math.round(temperature);
+    iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" alt="${response.data.condition.description}" />`;
+}
+
+function formatDate(date) {
+    let minutes = date.getMinutes();
+    let hours = date.getHours();
+    let days = [
+        "Sunday", 
+        "Monday", 
+        "Tuesday", 
+        "Wednesday", 
+        "Thursday", 
+        "Friday", 
+        "Saturday",
+    ];
+    let day = days[date.getDay()];
+
+    if (minutes < 10) minutes = `0${minutes}`;
+    if (hours < 10) hours = `0${hours}`;
+
+    return `${day} ${hours}:${minutes}`;
 }
 
 function searchCity(city) {
-    // API Key and URL
     let apiKey = "1f1767o48c592t883414d34c98adb09b";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-    
-    // Make the API call
+   
     axios.get(apiUrl)
         .then(refreshWeather)
         .catch((error) => {
@@ -33,10 +51,7 @@ function searchCity(city) {
 }
 
 function handleSearchSubmit(event) {
-    // Prevent the form from reloading the page
     event.preventDefault();
-    
-    // Get the search input value and pass it to the searchCity function
     let searchInput = document.querySelector("#search-form-input");
     if (searchInput.value.trim()) {
         searchCity(searchInput.value.trim());
@@ -45,9 +60,8 @@ function handleSearchSubmit(event) {
     }
 }
 
-// Attach the event listener to the form
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
-// Search for a default city on page load
+// Load default city weather
 searchCity("Sydney");
