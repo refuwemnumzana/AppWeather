@@ -12,15 +12,19 @@
   <body>
     <div class="weather-app">
       <header>
-        <form class="search-form">
-          <input type="search" placeholder="Enter a city..." required class="search-form-input" />
+        <form class="search-form" id="search-form">
+          <input type="search" placeholder="Enter a city..." 
+          required 
+          id="search-form-input" 
+          class="search-form-input" 
+          />
           <input type="submit" value="Search" class="search-form-button" />
         </form>
       </header>
       <main>
         <div class="weather-app-data">
           <div>
-            <h1 class="weather-app-city">Paris</h1>
+            <h1 class="weather-app-city" id="city">Paris</h1>
             <p class="weather-app-details">
               Tuesday 14:49, scattered clouds
               <br />
@@ -28,11 +32,9 @@
             </p>
           </div>
           <div class="weather-app-temperature-container">
+             <div class="weather-app-icon"> 🌤️</div>
             <div class="weather-app-temperature">
-              <div class="weather-app-icon">
-                🌤️ <i class="fa fa-cloud"></i> 
-              </div>
-              <div class="weather-app-temp-value">12</div>
+             <div class="weather-app-temp-value">12</div>
               <div class="weather-app-unit">°C</div>
             </div>
           </div>
@@ -48,6 +50,7 @@
 
     <!-- Add FontAwesome CDN for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="src/index.js"></script>
   </body>
 </html>
 
