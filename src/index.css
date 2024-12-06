@@ -4,35 +4,34 @@ body {
 }
 
 a {
-    color: #f9f7fe;
+    color: #885df1;
 }
 
-h1{
 
-}
-.weather-app{
+.weather-app {
     background: white;
     max-width: 600px;
     margin: 45px auto;
-    box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08)
-    border-radius: 16px
+    box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+    border-radius: 16px;
     padding: 30px;
 }
 
-header{
+header {
     border-bottom: 1px solid #f9f7fe;
     padding: 0 0 30px 0;
 }
-.search-form-input{
+
+.search-form-input {
     background-color: #f9f7fe;
     border: none;
     border-radius: 6px;
     width: 80%;
     padding: 15px 20px;
-
 }
-.search-form-button{
-    background: 885df1;
+
+.search-form-button {
+    background: #885df1; /* Fixed hex color */
     padding: 15px 30px;
     border: none;
     font-size: 16px;
@@ -41,68 +40,65 @@ header{
     color: white;
 }
 
-main{
+main {
     padding: 30px 0;
 }
 
-.weather-app-city{
+.weather-app-city {
     margin: 0;
     font-size: 38px;
     line-height: 48px;
 }
 
-.weather-app-details{
+.weather-app-details {
     font-size: 16px;
     color: rgba(39, 33, 66, 0.4);
     line-height: 24px;
-    font-weight: 500px;
-
-
+    font-weight: 500; /* Fixed invalid font-weight */
 }
 
-.weather-app-details strong{
-color: #f65282;
-
+.weather-app-details strong {
+    color: #f65282;
 }
 
-.weather-app-temperature-container{
+.weather-app-temperature-container {
     display: flex;
 }
 
-.weather-app-icon{
-font-size: 44px;
-margin-left: 10px;
-margin-top:22px;
-
+.weather-app-icon {
+    font-size: 44px;
+    margin-left: 10px;
+    margin-top: 22px;
 }
 
-.weather-app-unit{
+.weather-app-icon i {
+    font-size: 44px; /* Adjust size for the icon */
+    margin-right: 10px;
+}
+
+.weather-app-unit {
     margin-top: 16px;
     font-size: 28px;
 }
 
-.weather-app-temperature{
+.weather-app-temperature {
+    display:flex;
+    align-items: center;
     font-size: 88px;
     font-weight: bold;
-
 }
 
-.weather-app-data{
-display: flex;
-justify-content: space-between;
-
+.weather-app-data {
+    display: flex;
+    justify-content: space-between;
+     flex-wrap: wrap; /* Allow wrapping on small screens */
+   
 }
 
-main{
-    padding: 30px;
-
-}
-
-
-footer{
+footer {
     border-top: 1px solid #f9f7fe;
     padding: 30px 0 0 0;
     text-align: center;
-    font-size: 14px;
-    color:rgba(0,0,0,0.6);
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
 }
