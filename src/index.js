@@ -60,8 +60,44 @@ function handleSearchSubmit(event) {
     }
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = ""; // Ensure consistent variable name
+
+  days.forEach(function (day) {
+    forecastHtml += `
+      <div class="weather-forecast-item">
+        <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temperature"><strong>15°</strong></div>
+          <div class="weather-forecast-temperature">9°</div>
+        </div>
+      </div>
+    `;
+  });
+
+  forecastElement.innerHTML = forecastHtml; // Set HTML content
+}
+
+function handleSearchSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-form-input");
+  if (searchInput.value.trim()) {
+    searchCity(searchInput.value.trim());
+  } else {
+    alert("Please enter a valid city.");
+  }
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 // Load default city weather
 searchCity("Sydney");
+displayForecast();
+
+
+
