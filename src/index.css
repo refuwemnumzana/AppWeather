@@ -43,6 +43,13 @@ main {
     padding: 30px 0;
 }
 
+.weather-app-data {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+
+
 .weather-app-city {
     margin: 0;
     font-size: 38px;
@@ -74,12 +81,17 @@ main {
     line-height: 88px;
     font-weight: bold;
 }
-
-.weather-app-data {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; 
+.weather-app-unit {
+    margin-top: 6px;
+    font-size: 30px;
 }
+
+.weather-forecast {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
 
 .weather-app-date {
     text-align: center;
@@ -94,25 +106,29 @@ main {
     text-align: center;
 }
 
-.weather-app-date {
-    text-align: center;
-    color: rgba(39, 33, 66, 0.4);
-    font-size: 16px;
-    line-height: 20px;
-    margin-bottom: 10px;
-}
 
 .weather-app-icon {
     font-size: 38px;
     text-align: center;
 }
 
-.weather-forecast {
+.weather-forecast-temperatures {
+    text-align: center;
+    color: #f65282;
+    margin-top: 10px;
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    justify-content: space-around;
-    margin-top: 30px;
-    gap: 20px; /* Adds space between blocks */
+    justify-content: center;
+}
+
+.weather-forecast-temperature {
+    padding: 0 10px;
+    color: #4a90e2;
+    font-weight: lighter;
+}
+
+
+.weather-forecast-temperature strong {
+    color: #ff6b6b; /* High temperature color */
 }
 
 .weather-forecast-item {
@@ -124,31 +140,6 @@ main {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
-.weather-forecast-temperatures {
-    text-align: center;
-    color: #f65282;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* Space between high and low temps */
-}
-
-.weather-forecast-temperature {
-    padding: 0 10px;
-    font-size: 18px;
-}
-
-.weather-forecast-temperature strong {
-    color: #ff6b6b; /* High temperature color */
-}
-
-.weather-forecast-temperature:last-child {
-    color: #4a90e2; /* Low temperature color */
-    font-weight: lighter;
-}
-
-
 
 footer {
     border-top: 1px solid #f9f7fe;

@@ -16,6 +16,8 @@ function refreshWeather(response) {
     windSpeedElement.innerHTML = `${response.data.wind.speed} km/h`;
     temperatureElement.innerHTML = Math.round(temperature);
     iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" alt="${response.data.condition.description}" />`;
+
+    getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -40,7 +42,7 @@ function formatDate(date) {
 
 function searchCity(city) {
     let apiKey = "1f1767o48c592t883414d34c98adb09b";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
    
     axios.get(apiUrl)
         .then(refreshWeather)
@@ -60,7 +62,20 @@ function handleSearchSubmit(event) {
     }
 }
 
-function displayForecast() {
+function getForcast(city) {
+let apiKey = "1f1767o48c592t883414d34c98adb09b";
+let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+axios(apiUrl).then(displayForecast);
+
+}
+
+function displayForecast(response) {
+console.log(response.data);
+
+
+
+
+
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -97,6 +112,7 @@ searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 // Load default city weather
 searchCity("Sydney");
+getForecast("Sydney");
 displayForecast();
 
 
